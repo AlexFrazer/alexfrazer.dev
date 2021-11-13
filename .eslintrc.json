@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
+  "plugins": ["prettier", "tailwindcss"],
+  "settings": {
+    "tailwindcss": {
+      "config": "./tailwind.config.js"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["./tailwind.config.js"],
+      "rules": {
+        "import/no-common-js": "off"
+      }
+    }
+  ]
 }
