@@ -22,6 +22,7 @@ const NavLink: VFC<Props> = ({
           "mt-2",
           "text-sm",
           "font-semibold",
+          "capitalize",
           // TODO: revisit colors
           "text-white",
           "dark-mode:text-white",

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .link-active {
+      scroll-snap-type: none;
+    }
+  }
+}

@@ -1,1 +1,12 @@
-{}
+{
+  "sidebar": {
+    "title": "Alex Frazer",
+    "items": {
+      "blog": "blog"
+    },
+    "toggle": {
+      "label": "Mobile Navigation Menu",
+      "srLabel": "Menu"
+    }
+  }
+}

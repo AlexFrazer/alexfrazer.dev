@@ -1,4 +1,7 @@
-import { ComponentProps, ReactNode, useState, VFC } from "react";
+import { useState } from "react";
+import type { ComponentProps, VFC } from "react";
+import { useId } from "@reach/auto-id";
+import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import clsx from "clsx";
 import NavLink from "./NavLink";
@@ -34,6 +37,8 @@ const HeaderLink: VFC<HeaderLinkProps> = ({
 };
 
 const Sidebar: VFC<{}> = () => {
+  const id = useId();
+  const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
   const onToggle = () => setIsOpen((open) => !open);
 
@@ -45,11 +50,8 @@ const Sidebar: VFC<{}> = () => {
         "flex-shrink-0",
         "w-full",
         "md:w-64",
-        "text-white",
         "bg-gradient-to-b",
         "md:bg-gradient-to-r",
-        "from-blue-400",
-        "to-blue-500",
       )}
     >
       <div
@@ -64,9 +66,10 @@ const Sidebar: VFC<{}> = () => {
         )}
       >
         <HeaderLink />
-        <NavToggle isOpen={isOpen} onClick={onToggle} />
+        <NavToggle aria-controls={id} isOpen={isOpen} onClick={onToggle} />
       </div>
       <nav
+        id={id}
         className={clsx(
           "flex-grow",
           "px-4",
@@ -79,8 +82,13 @@ const Sidebar: VFC<{}> = () => {
             block: isOpen,
           },
         )}
+        onClick={onToggle}
       >
-        <NavLink href="/blog">Blog</NavLink>
+        <ul>
+          <li>
+            <NavLink href="/blog">{t("sidebar.items.blog")}</NavLink>
+          </li>
+        </ul>
       </nav>
     </div>
   );

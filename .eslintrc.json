@@ -5,7 +5,7 @@
     "plugin:prettier/recommended",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["prettier", "tailwindcss"],
+  "plugins": ["prettier", "tailwindcss", "testing-library"],
   "settings": {
     "tailwindcss": {
       "config": "./tailwind.config.js"
@@ -17,6 +17,13 @@
       "rules": {
         "import/no-common-js": "off"
       }
+    },
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
     }
   ]
 }

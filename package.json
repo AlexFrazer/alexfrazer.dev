@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "next": "12.0.3",
@@ -14,10 +15,12 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@reach/auto-id": "^0.16.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@tsconfig/next": "^1.0.1",
     "@types/jest": "^27.0.2",
+    "@types/jest-axe": "^3.5.3",
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",
     "@types/tailwindcss": "^2.2.4",
@@ -28,10 +31,13 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-tailwindcss": "^1.17.1",
+    "eslint-plugin-testing-library": "^5.0.0",
     "jest": "^27.3.1",
+    "jest-axe": "^5.0.1",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.19",
+    "ts-node": "^10.4.0",
     "typescript": "4.4.4"
   }
 }
