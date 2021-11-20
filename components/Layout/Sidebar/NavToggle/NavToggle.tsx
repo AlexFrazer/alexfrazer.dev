@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import type { ComponentProps } from "react";
 import clsx from "clsx";
 import useTranslation from "next-translate/useTranslation";
+import { useId } from "@reach/auto-id";
 
 interface Props extends ComponentProps<"button"> {
   readonly type?: "button" | "submit" | "reset";
@@ -18,8 +19,8 @@ const ToggleIcon = ({ isOpen }: Pick<Props, "isOpen">) => {
       className="w-6 h-6 text-white"
     >
       <path
-        x-show="open"
         fillRule="evenodd"
+        data-testid="nav-toggle-icon"
         d={
           isOpen
             ? "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -39,7 +40,6 @@ const NavToggle = forwardRef<HTMLButtonElement, Props>(
         {...props}
         type={type}
         ref={ref}
-        aria-label={t("sidebar.toggle.label")}
         aria-expanded={isOpen}
         className={clsx(
           "rounded-lg",
@@ -49,7 +49,7 @@ const NavToggle = forwardRef<HTMLButtonElement, Props>(
         )}
       >
         <ToggleIcon isOpen={isOpen} />
-        <span className="sr-only">Menu</span>
+        <span className="sr-only">{t("sidebar.toggle.label")}</span>
       </button>
     );
   },

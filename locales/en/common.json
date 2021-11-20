@@ -5,8 +5,7 @@
       "blog": "blog"
     },
     "toggle": {
-      "label": "Mobile Navigation Menu",
-      "srLabel": "Menu"
+      "label": "Menu"
     }
   }
 }

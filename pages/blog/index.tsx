@@ -1,4 +1,5 @@
-import type { NextPage } from "next";
+import { PrismaClient } from "@prisma/client";
+import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 

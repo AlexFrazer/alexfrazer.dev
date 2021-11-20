@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@test/*": ["./test/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "tailwind.config.js"],
