@@ -7,7 +7,6 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const posts = await prisma.users.findMany();
-  console.log(posts);
-  res.status(200).json({ status: "success" });
+  const posts = prisma.post.findMany();
+  res.status(200).json({ status: "success", data: posts });
 }

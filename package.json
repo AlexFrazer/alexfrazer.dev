@@ -15,7 +15,8 @@
     "next-translate": "^1.2.0",
     "prisma": "^3.5.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-query": "^3.33.2"
   },
   "devDependencies": {
     "@reach/auto-id": "^0.16.0",
