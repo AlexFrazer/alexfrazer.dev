@@ -7,10 +7,9 @@ import Head from "next/head";
 type Props = { posts: readonly Post[] };
 
 const Blog: NextPage<Props> = ({ posts }) => {
-  console.log(posts);
   const { t } = useTranslation("blog");
   return (
-    <div>
+    <div className="container px-8">
       <Head>
         <title>{t("title")}</title>
       </Head>

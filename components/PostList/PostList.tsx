@@ -13,12 +13,10 @@ async function fetchPosts() {
 
 const PostList = forwardRef<HTMLUListElement, Props>(
   ({ initialPosts, ...props }, ref) => {
-    const {
-      data: posts,
-      isLoading,
-      isError,
-      error,
-    } = useQuery<readonly Post[], Error>("posts", fetchPosts, {
+    const { data, isLoading, isError, error } = useQuery<
+      readonly Post[],
+      Error
+    >("posts", fetchPosts, {
       initialData: initialPosts,
     });
 
@@ -35,7 +33,7 @@ const PostList = forwardRef<HTMLUListElement, Props>(
       );
     }
 
-    if (!posts.length) {
+    if (!data.length) {
       return (
         <div role="alert" aria-live="polite" className="dark:text-white">
           No results
@@ -45,7 +43,7 @@ const PostList = forwardRef<HTMLUListElement, Props>(
 
     return (
       <ul {...props} ref={ref} className="flex flex-col gap-2">
-        {posts.map(({ id, title }) => {
+        {data.map(({ id, title }) => {
           return <li key={id}>{title}</li>;
         })}
       </ul>
