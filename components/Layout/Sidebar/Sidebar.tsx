@@ -6,6 +6,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import NavLink from "./NavLink";
 import NavToggle from "./NavToggle";
+import UserProfile from "./UserProfile";
 
 type HeaderLinkProps = ComponentProps<"a">;
 
@@ -90,6 +91,7 @@ const Sidebar: VFC<{}> = () => {
           </li>
         </ul>
       </nav>
+      <UserProfile />
     </div>
   );
 };
