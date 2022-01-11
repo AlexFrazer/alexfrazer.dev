@@ -45,6 +45,17 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  posts         Post[]
+}
+
+model Post {
+  id            String    @id @default(cuid())
+  title         String
+  subtitle      String?
+  authorId      String
+  content       String?
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
