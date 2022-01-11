@@ -19,7 +19,6 @@ const NavLink: VFC<Props> = ({
           "block",
           "py-2",
           "px-4",
-          "mt-2",
           "text-sm",
           "font-semibold",
           "capitalize",

@@ -2,11 +2,14 @@ import Image from "next/image";
 import { useSession, signIn } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { VFC } from "react";
+import clsx from "clsx";
 
-interface Props {}
+interface Props {
+  readonly isOpen: boolean;
+}
 
-const UserProfile: VFC<Props> = () => {
-  const { t } = useTranslation();
+const UserProfile: VFC<Props> = ({ isOpen }) => {
+  const { t } = useTranslation("common");
   const { data, status } = useSession({ required: false });
 
   const onClick = () => signIn();
@@ -15,15 +18,23 @@ const UserProfile: VFC<Props> = () => {
     return (
       <button
         onClick={onClick}
-        className="flex px-8 py-6 text-sm dark:text-white"
+        className={clsx("flex", "py-2", "px-4", "text-sm", "dark:text-white", {
+          // hidden: !isOpen,
+          // block: isOpen,
+        })}
       >
-        Log in
+        {t("sidebar.user-menu.sign-in")}
       </button>
     );
   }
 
   return (
-    <div className="flex items-center px-8 py-6">
+    <div
+      className={clsx("flex", "items-center", "px-4", "py-2", {
+        hidden: !isOpen,
+        block: isOpen,
+      })}
+    >
       {data?.user?.image && (
         <Image
           className="rounded-full"

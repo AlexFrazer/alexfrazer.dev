@@ -6,6 +6,9 @@
     },
     "toggle": {
       "label": "Menu"
+    },
+    "user-menu": {
+      "sign-in": "Sign In"
     }
   }
 }

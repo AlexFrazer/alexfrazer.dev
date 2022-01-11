@@ -7,6 +7,7 @@ import clsx from "clsx";
 import NavLink from "./NavLink";
 import NavToggle from "./NavToggle";
 import UserProfile from "./UserProfile";
+import { useSession } from "next-auth/react";
 
 type HeaderLinkProps = ComponentProps<"a">;
 
@@ -42,6 +43,7 @@ const Sidebar: VFC<{}> = () => {
   const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
   const onToggle = () => setIsOpen((open) => !open);
+  const { status, data } = useSession({ required: false });
 
   return (
     <div
@@ -69,29 +71,44 @@ const Sidebar: VFC<{}> = () => {
         <HeaderLink />
         <NavToggle aria-controls={id} isOpen={isOpen} onClick={onToggle} />
       </div>
-      <nav
-        id={id}
-        className={clsx(
-          "flex-grow",
-          "px-4",
-          "pb-4",
-          "md:block",
-          "md:pb-0",
-          "md:overflow-y-auto",
-          {
-            hidden: !isOpen,
-            block: isOpen,
-          },
-        )}
-        onClick={onToggle}
-      >
-        <ul>
-          <li>
-            <NavLink href="/blog">{t("sidebar.items.blog")}</NavLink>
-          </li>
-        </ul>
-      </nav>
-      <UserProfile />
+      <div className="flex-grow">
+        <nav
+          id={id}
+          className={clsx(
+            "flex-col",
+            "justify-between",
+            "gap-2",
+            "px-4",
+            "pb-4",
+            "h-full",
+            "md:flex",
+            "md:pb-0",
+            {
+              hidden: !isOpen,
+              block: isOpen,
+            },
+          )}
+          onClick={onToggle}
+        >
+          <ul className="md:overflow-y-auto">
+            <li>
+              <NavLink href="/blog">{t("sidebar.items.blog")}</NavLink>
+            </li>
+          </ul>
+          <ul className="pb-4">
+            <li>
+              {status === "authenticated" && (
+                <NavLink href="/api/auth/signout">{data?.user?.name}</NavLink>
+              )}
+              {status === "unauthenticated" && (
+                <NavLink href="/api/auth/signin">
+                  {t("sidebar.user-menu.sign-in")}
+                </NavLink>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };
