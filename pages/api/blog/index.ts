@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import type { NextApiHandler } from "next";
-
-const prisma = new PrismaClient();
+import client from "@/prisma-client";
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "GET") {
-    const posts = prisma.post.findMany();
+    const posts = client.post.findMany();
     res.status(200).json({ status: "success", data: posts });
   } else if (req.method === "POST") {
   } else {
